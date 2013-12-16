@@ -1,13 +1,14 @@
+"use strict";
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady() {
-    
-    pictureSource=navigator.camera.PictureSourceType;
-    destinationType=navigator.camera.DestinationType;
-	$("#instaLink").on("click", newFn);
-    $("#geoMe").on("click", getMyGEo);
-    $("#mapMe").on("click", initialize);
-    $("#takePic").on("click", capturePhoto);
+function onDeviceReady(){ 
+     
+     pictureSource=navigator.camera.PictureSourceType;
+     destinationType=navigator.camera.DestinationType;
+     $("#instaLink").on("click", newFn);
+     $("#geoMe").on("click", getMyGEo);
+     $("#mapMe").on("click", initialize);
+     $("#takePic").on("click", capturePhoto);
 	
 } // phonegap deviceready
 
@@ -17,12 +18,12 @@ function onDeviceReady() {
 	      $.getJSON (url, newPage);
 	      };     // end of function            
 
-	    var newPage = function (info) {
+	    var newPage = function (info){
 	        
 	        alert("Instagram Works!!");
 			console.log(info);
 	        
-	        $.each(info.data, function (index, photo) {
+	        $.each(info.data, function (index, photo){
 	               var pic = "<li><img src='" + photo.images.standard_resolution.url + "'alt='" + photo.user.id +"' /><h4>" + " <em>" + photo.user.username +"</em></h4></li>";
 	               
 	            $("#page2li").append(pic);
@@ -38,11 +39,11 @@ var newFn2 = function(){
     
 };  // end of function
 
-var newPage2 = function (info) {
+var newPage2 = function (info){
     
     console.log(info);
     
-    $.each(info.data, function (index, image) {
+    $.each(info.data, function (index, image){
            var localMap = "<li><img src='" + image.standard_resolution.url + "'alt='" + image.user.id +"'/></li>";
 
            
@@ -52,7 +53,7 @@ var newPage2 = function (info) {
 };  // end of newPage function
 
 
-function initialize() {
+function initialize(){
     
     var mapOptions = {
     zoom: 8,
@@ -70,7 +71,7 @@ function getMyGEo(){
 };
 
 
-function onSuccess(position) {
+function onSuccess(position){
     var element = document.getElementById('geolocation');
     element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
     'Longitude: '          + position.coords.longitude             + '<br />' +
@@ -84,7 +85,7 @@ function onSuccess(position) {
 
 // onError Callback receives a PositionError object
 //
-function onError(error) {
+function onError(error){
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
@@ -98,7 +99,7 @@ var destinationType; // sets the format of returned value
 
 // Called when a photo is successfully retrieved
 //
-function onPhotoDataSuccess(imageData) {
+function onPhotoDataSuccess(imageData){
     // Uncomment to view the base64 encoded image data
     // console.log(imageData);
     
@@ -118,7 +119,7 @@ function onPhotoDataSuccess(imageData) {
 
 // Called when a photo is successfully retrieved
 //
-function onPhotoURISuccess(imageURI) {
+function onPhotoURISuccess(imageURI){
     // Uncomment to view the image file URI
     // console.log(imageURI);
     
@@ -138,21 +139,21 @@ function onPhotoURISuccess(imageURI) {
 
 // A button will call this function
 //
-function capturePhoto() {
+function capturePhoto(){
     // Take picture using device camera and retrieve image as base64-encoded string
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
 }
 
 // A button will call this function
 //
-function capturePhotoEdit() {
+function capturePhotoEdit(){
     // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true });
 }
 
 // A button will call this function
 //
-function getPhoto(source) {
+function getPhoto(source){
     // Retrieve image file location from specified source
     navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
                                 destinationType: destinationType.FILE_URI,
@@ -161,7 +162,7 @@ function getPhoto(source) {
 
 // Called if something bad happens.
 //
-function onFail(message) {
+function onFail(message){
     alert('Failed because: ' + message);
 }
 
