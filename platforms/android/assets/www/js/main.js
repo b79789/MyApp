@@ -1,15 +1,38 @@
+$("#home").on('pageinit', function () {
+    //code needed for home page goes here
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     
+    navigator.compass.getCurrentHeading(onSuccess2, onError2);
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
 	$("#instaLink").on("click", newFn);
     $("#geoMe").on("click", getMyGEo);
     $("#mapMe").on("click", initialize);
     $("#takePic").on("click", capturePhoto);
+    $("#contactPage").on("click", options);
+    $("#compassPage").on("click", capturePhoto);
+    
 	
 } // phonegap deviceready
+
+
+
+ var options = new ContactFindOptions();
+                options.filter = "Bob";
+                var fields = ["displayName", "name"];
+                navigator.contacts.find(fields, onSuccess1, onError1, options);
+
+			function onSuccess1(contacts) {
+                for (var i = 0; i < contacts.length; i++) {
+                    console.log("Display Name = " + contacts[i].displayName);
+                }
+            }
+            
+            function onError1(contactError) {
+                alert('onError!');
+            }
 
 	var newFn = function(){
 		console.log("Firing!");
@@ -165,4 +188,5 @@ function onFail(message) {
     alert('Failed because: ' + message);
 }
 
+});
 

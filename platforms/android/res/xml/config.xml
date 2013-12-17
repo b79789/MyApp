@@ -11,6 +11,9 @@
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
     </feature>
+    <feature name="Compass">
+    <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+	</feature>
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
@@ -73,4 +76,7 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="http://127.0.0.1*" />
     <content src="index.html" />
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
 </widget>

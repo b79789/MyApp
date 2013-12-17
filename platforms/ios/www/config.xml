@@ -8,7 +8,17 @@
         PhoneGap Team
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
-    <plugin name="Echo" value="Echo" onload="true" />
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <plugins>
+        <plugin name="Geolocation" value="CDVLocation" />
+        <plugin name="Camera" value="CDVCamera" />
+        <plugin name="Echo" value="Echo" onload="true" />
+    </plugins>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />

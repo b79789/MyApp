@@ -91,7 +91,7 @@ function onError(error){
 }
 
 
-//camera function
+//camera function^^^^^^^^^^^^^^^
 
 	   //Get picture function
 var pictureSource;   // picture source

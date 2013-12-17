@@ -9,8 +9,16 @@
         <plugin name="Echo" value="Echo" onload="true" />
     </feature>
     <access origin="*" />
-    <plugin name="Geolocation" value="CDVLocation" />
-    <plugin name="Camera" value="CDVCamera" />
+    <feature name="Camera">
+        <param name="ios-package" value="CDVCamera" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <plugins>
+        <plugin name="Geolocation" value="CDVLocation" />
+        <plugin name="Camera" value="CDVCamera" />
+    </plugins>
     <preference name="KeyboardDisplayRequiresUserAction" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="UIWebViewBounce" value="true" />
