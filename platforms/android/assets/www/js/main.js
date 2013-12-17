@@ -1,38 +1,80 @@
-$("#home").on('pageinit', function () {
-    //code needed for home page goes here
+var watchID = null;
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+   
     
-    navigator.compass.getCurrentHeading(onSuccess2, onError2);
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
 	$("#instaLink").on("click", newFn);
     $("#geoMe").on("click", getMyGEo);
     $("#mapMe").on("click", initialize);
     $("#takePic").on("click", capturePhoto);
-    $("#contactPage").on("click", options);
-    $("#compassPage").on("click", capturePhoto);
+    $("#CreateMyContact").on("click", createContacts);
+    $("#findMyContact").on("click", getContacts);
+    $("#compassLi").on("click", startWatch);
     
 	
 } // phonegap deviceready
+var watchID = null;
 
-
-
- var options = new ContactFindOptions();
-                options.filter = "Bob";
+function getContacts(){
+	var options6 = new ContactFindOptions();
+                options6.filter = "Bob";
                 var fields = ["displayName", "name"];
-                navigator.contacts.find(fields, onSuccess1, onError1, options);
+                navigator.contacts.find(fields, onSuccess6, onError6, options6);
+}
 
-			function onSuccess1(contacts) {
+function createContacts(){
+	var myContact = navigator.contacts.create({"displayName": "Test User"});
+        myContact.note = "This contact has a note.";
+        console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
+}
+
+			function onSuccess6(contacts) {
                 for (var i = 0; i < contacts.length; i++) {
                     console.log("Display Name = " + contacts[i].displayName);
                 }
             }
-            
-            function onError1(contactError) {
+
+            // onError: Failed to get the contacts
+
+            function onError6(contactError) {
                 alert('onError!');
             }
+
+ function startWatch() {
+
+        // Update compass every 3 seconds
+        var options2 = { frequency: 3000 };
+
+        watchID = navigator.compass.watchHeading(onSuccess5, onError5, options2);
+    }
+
+    // Stop watching the compass
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.compass.clearWatch(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess5: Get the current heading
+    //
+    function onSuccess5(heading) {
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+    }
+
+    // onError5: Failed to get the heading
+    //
+    function onError5(compassError) {
+        alert('Compass error: ' + compassError.code);
+    }
+
+  
 
 	var newFn = function(){
 		console.log("Firing!");
@@ -79,7 +121,7 @@ function initialize() {
     
     var mapOptions = {
     zoom: 8,
-    center: new google.maps.LatLng(-34.397, 150.644)
+    center: new google.maps.LatLng(35.639441,-81.23291)
        
     };
     
@@ -188,5 +230,5 @@ function onFail(message) {
     alert('Failed because: ' + message);
 }
 
-});
+
 
