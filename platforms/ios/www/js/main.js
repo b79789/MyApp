@@ -1,21 +1,25 @@
 "use strict";
 document.addEventListener("deviceready", onDeviceReady, false);
 
-function onDeviceReady(){ 
-     
+function onDeviceReady(){
      pictureSource=navigator.camera.PictureSourceType;
      destinationType=navigator.camera.DestinationType;
-     $("#instaLink").on("click", newFn);
+     $("#myNewSubmit").on("click", newFn);
      $("#geoMe").on("click", getMyGEo);
-     $("#mapMe").on("click", initialize);
+     //$("#mapMe").on("click", initialize);
      $("#takePic").on("click", capturePhoto);
 	
 } // phonegap deviceready
 
+
+    // instagram api function^^^^^^^^^^^^
 	var newFn = function(){
 		console.log("Firing!");
-		var url = "https://api.instagram.com/v1/media/search?lat=48.858844&lng=2.294351&access_token=37026479.f59def8.473e0665cc5b469e9d492070a0fd1da8";
+		var myTags = $("#myInstagramSearch").val();
+		console.log(myTags);
+		var url = "https://api.instagram.com/v1/tags/" + myTags + "/media/recent?&access_token=37026479.f59def8.473e0665cc5b469e9d492070a0fd1da8";
 	      $.getJSON (url, newPage);
+	      return false;
 	      };     // end of function            
 
 	    var newPage = function (info){
@@ -24,48 +28,49 @@ function onDeviceReady(){
 			console.log(info);
 	        
 	        $.each(info.data, function (index, photo){
-	               var pic = "<li><img src='" + photo.images.standard_resolution.url + "'alt='" + photo.user.id +"' /><h4>" + " <em>" + photo.user.username +"</em></h4></li>";
+	               var pic = "<li><img src='" + photo.images.standard_resolution.url + "'alt='" + photo.user.id +"'style=width:100%;height:100%; /><h4>" + " <em>" + photo.user.username +"</em></h4></li>";
 	               
 	            $("#page2li").append(pic);
 	         }); // end of each
 	     }; // end of newPage function
 
 
-var newFn2 = function(){
-    
-    var url2 = "http://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&sensor=false";
-    
-    $.getJSON (url2, newPage2);
-    
-};  // end of function
-
-var newPage2 = function (info){
-    
-    console.log(info);
-    
-    $.each(info.data, function (index, image){
-           var localMap = "<li><img src='" + image.standard_resolution.url + "'alt='" + image.user.id +"'/></li>";
-
-           
-           $("#page3li").append(localMap);
-           }); // end of each 
-    
-};  // end of newPage function
 
 
-function initialize(){
-    
+
+// map function ^^^^^^^^^^^^^^
+function initialize() {
     var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(-34.397, 150.644)
-       
+    zoom: 4,
+    center: new google.maps.LatLng(-25.363882, 131.044922)
     };
     
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions );
-    google.maps.event.trigger(map, 'resize');
+    var map = new google.maps.Map(document.getElementById('map-canvas'),
+                                  mapOptions);
     
+    var marker = new google.maps.Marker({
+                                        position: map.getCenter(),
+                                        map: map,
+                                        title: 'Click to zoom'
+                                        });
+    
+    google.maps.event.addListener(map, 'center_changed', function() {
+                                  // 3 seconds after the center of the map has changed, pan back to the
+                                  // marker.
+                                  window.setTimeout(function() {
+                                                    map.panTo(marker.getPosition());
+                                                    }, 3000);
+                                  });
+    
+    google.maps.event.addListener(marker, 'click', function() {
+                                  map.setZoom(8);
+                                  map.setCenter(marker.getPosition());
+                                  });
 }
 
+google.maps.event.addDomListener(window, 'load', initialize);
+
+//geo function^^^^^^^^^^^
 function getMyGEo(){
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 };
@@ -73,7 +78,8 @@ function getMyGEo(){
 
 function onSuccess(position){
     var element = document.getElementById('geolocation');
-    element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+    element.innerHTML =
+    'Latitude: '           + position.coords.latitude              + '<br />' +
     'Longitude: '          + position.coords.longitude             + '<br />' +
     'Altitude: '           + position.coords.altitude              + '<br />' +
     'Accuracy: '           + position.coords.accuracy              + '<br />' +
@@ -141,14 +147,14 @@ function onPhotoURISuccess(imageURI){
 //
 function capturePhoto(){
     // Take picture using device camera and retrieve image as base64-encoded string
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,saveToPhotoAlbum: true });
 }
 
 // A button will call this function
 //
 function capturePhotoEdit(){
     // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true });
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 20, allowEdit: true,saveToPhotoAlbum: true });
 }
 
 // A button will call this function

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		074B79CB0CF44F44971D0118 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9B7B903C144D8E9A4BB683 /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		12E74CAA25FD463BB962EB79 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5599E330979A4E2080E4C39D /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -47,7 +48,6 @@
 		E94C2495C3694720828C8FD4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A0EAAA1D4994F1F94E09A36 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F6979C1B6B7B49B5927B2F98 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 30781F9F246A466689E96B40 /* CDVNotification.m */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
-		BE6EAFD682F04A3E89724C19 /* CDVCompass.m in Sources */ = {isa = PBXBuildFile; fileRef = A314185C118B4AE2AFAC28A4 /* CDVCompass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,15 +121,15 @@
 		932850891E43476BB6A8C5AE /* CDVContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVContact.m; path = org.apache.cordova.contacts/CDVContact.m; sourceTree = "<group>"; };
 		9AEA5294D46E45C89DA94FF4 /* CDVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = org.apache.cordova.geolocation/CDVLocation.h; sourceTree = "<group>"; };
 		A26F86AF97BD4A8AA330B0EC /* CDVContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVContacts.h; path = org.apache.cordova.contacts/CDVContacts.h; sourceTree = "<group>"; };
+		A314185C118B4AE2AFAC28A4 /* CDVCompass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVCompass.m; path = "org.apache.cordova.device-orientation/CDVCompass.m"; sourceTree = "<group>"; };
 		B0D75A3318324292A6209A0C /* CDVExif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVExif.h; path = org.apache.cordova.camera/CDVExif.h; sourceTree = "<group>"; };
 		B6176374E43F4214A95681F3 /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = org.apache.cordova.dialogs/CDVNotification.h; sourceTree = "<group>"; };
 		BB9B7B903C144D8E9A4BB683 /* ImageIO.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		CBB8AE4051AC4F2195DE2A0F /* CDVContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVContact.h; path = org.apache.cordova.contacts/CDVContact.h; sourceTree = "<group>"; };
+		D2C8F116C070488E98CF2BA9 /* CDVCompass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCompass.h; path = "org.apache.cordova.device-orientation/CDVCompass.h"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		D5918FBB62C14F4EA683672E /* CDVVibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVVibration.m; path = org.apache.cordova.vibration/CDVVibration.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = iHereNow/config.xml; sourceTree = "<group>"; };
-		A314185C118B4AE2AFAC28A4 /* CDVCompass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVCompass.m"; path = "org.apache.cordova.device-orientation/CDVCompass.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		D2C8F116C070488E98CF2BA9 /* CDVCompass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVCompass.h"; path = "org.apache.cordova.device-orientation/CDVCompass.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,7 +462,6 @@
 				1D04DE9B54F04C7C8E2322BB /* CDVVibration.m in Sources */,
 				D8B8530590844465A606E702 /* CDVContacts.m in Sources */,
 				D399223F7D8B477C8C50F0A5 /* CDVContact.m in Sources */,
-				BE6EAFD682F04A3E89724C19 /* CDVCompass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
