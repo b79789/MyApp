@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DD0B1BF5-6380-42A5-8526-64B29A6086F0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iHereNow</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>382A4427-8023-4CF2-9907-7AF670FB49EB</key>
+		<string>https://github.com/b79789/MyApp.git</string>
+		<key>8D12628D-B426-4BC9-8A71-A9E97752C9B4</key>
+		<string>https://github.com/b79789/wwwiOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/iHereNow.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>382A4427-8023-4CF2-9907-7AF670FB49EB</key>
+		<string>../../../..</string>
+		<key>8D12628D-B426-4BC9-8A71-A9E97752C9B4</key>
+		<string>../../www</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/b79789/MyApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>382A4427-8023-4CF2-9907-7AF670FB49EB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>382A4427-8023-4CF2-9907-7AF670FB49EB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyApp</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8D12628D-B426-4BC9-8A71-A9E97752C9B4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>www</string>
+		</dict>
+	</array>
+</dict>
+</plist>

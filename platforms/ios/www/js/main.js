@@ -1,4 +1,4 @@
-"use strict";
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady(){
@@ -6,7 +6,7 @@ function onDeviceReady(){
      destinationType=navigator.camera.DestinationType;
      $("#myNewSubmit").on("click", newFn);
      $("#geoMe").on("click", getMyGEo);
-     //$("#mapMe").on("click", initialize);
+     //$("#mapMe").on("click", mymapFn);
      $("#takePic").on("click", capturePhoto);
 	
 } // phonegap deviceready
@@ -39,37 +39,9 @@ function onDeviceReady(){
 
 
 // map function ^^^^^^^^^^^^^^
-function initialize() {
-    var mapOptions = {
-    zoom: 4,
-    center: new google.maps.LatLng(-25.363882, 131.044922)
-    };
-    
-    var map = new google.maps.Map(document.getElementById('map-canvas'),
-                                  mapOptions);
-    
-    var marker = new google.maps.Marker({
-                                        position: map.getCenter(),
-                                        map: map,
-                                        title: 'Click to zoom'
-                                        });
-    
-    google.maps.event.addListener(map, 'center_changed', function() {
-                                  // 3 seconds after the center of the map has changed, pan back to the
-                                  // marker.
-                                  window.setTimeout(function() {
-                                                    map.panTo(marker.getPosition());
-                                                    }, 3000);
-                                  });
-    
-    google.maps.event.addListener(marker, 'click', function() {
-                                  map.setZoom(8);
-                                  map.setCenter(marker.getPosition());
-                                  });
+var mymapFn = function(){
+        
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
 //geo function^^^^^^^^^^^
 function getMyGEo(){
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
